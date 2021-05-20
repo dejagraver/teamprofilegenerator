@@ -1,0 +1,32 @@
+{
+  "name": "teamprofilegenerator",
+  "version": "1.0.0",
+  "description": "OOP",
+  "main": "app.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dejagraver/teamprofilegenerator.git"
+  },
+  "keywords": [
+    "employee",
+    "manager",
+    "engineer",
+    "intern"
+  ],
+  "author": "Deja Martin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dejagraver/teamprofilegenerator/issues"
+  },
+  "homepage": "https://github.com/dejagraver/teamprofilegenerator#readme",
+  "dependencies": {
+    "inquirer": "^8.0.0",
+    "jest": "^26.6.3"
+  }
+}
