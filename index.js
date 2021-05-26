@@ -14,14 +14,14 @@ internArray = [];
 // employeeArray = [];
 
 //
-var generatedHTML = [];
+// var generatedHTML = [];
 
 // Create an array of employee objects that coincide with question, selection of employee type 
 const chooseEmployee = [
     {
         type: "list",
         name: "employeeObjects",
-        message: "Choose employee to add",
+        message: "Choose an employee memeber",
         choices: ["Manager", "Engineer", " Intern"]
     }
 ];
@@ -69,6 +69,12 @@ const questions = {
                 } else { return "Please enter manager's office number!" }
             },
         },
+        {
+            type: "list",
+            name: "addEmployee",
+            message: "Do you want to add another member to the team",
+            choices: ["yes", "no"]
+        },
     ],
 
     Engineer: [
@@ -111,6 +117,12 @@ const questions = {
                     return true
                 } else { return "Please enter engineer's GitHub!" }
             },
+        },
+        {
+            type: "list",
+            name: "addEmployee",
+            message: "Do you want to add another member to the team",
+            choices: ["yes", "no"]
         },
     ],
 
@@ -155,8 +167,16 @@ const questions = {
                 } else { return "Please enter the name of school!" }
             },
         },
+        {
+            type: "list",
+            name: "addEmployee",
+            message: "Do you want to add another member to the team",
+            choices: ["yes", "no"]
+        },
     ]
 };
+
+
 
 //prompting choose Employee and questions, to then save employee information
 function saveEmployee() {
@@ -171,6 +191,11 @@ function saveEmployee() {
                     const manager = new Manager(value.name, value.id, value.email, value.officeNumber);
                         //push employee information in to an array 
                         managerArray.push(manager);
+                        if (value.addEmployee === "yes"){
+                            saveEmployee();
+                        } else {
+                            generateFile();
+                        };
                 });
         }
     } 
@@ -179,13 +204,23 @@ function saveEmployee() {
             .then(value => {
                const engineer = new Engineer(value.name, value.id, value.email,value.github);
                engineerArray.push(engineer);
+               if (value.addEmployee === "yes"){
+                saveEmployee();
+            } else {
+                generateFile();
+            };
             });
 
     } else if (value.employeeObjects === "Intern") {
         inquirer.prompt(questions.Intern)
             .then(value => {
                 const intern = new Intern(value.name, value.id, value.email, value.school);
-                internArray.push(intern);
+                internArray.push(intern)
+                if (value.addEmployee === "yes"){
+                    saveEmployee();
+                } else {
+                    generateFile();
+                };
             });
     };
 });
@@ -197,7 +232,7 @@ saveEmployee();
 //saveEmployee().then return Employee array with the generated HTML .then writeFile using the generateFile function to return and outpuut for the finalHTML
 
 //holds final HTML
-finalHTML = [];
+finalHTMLArray = [];
 
 //generates HTML for each employee, joins employee data and pushes to finalHTML array  
 function generatedHTML() {
@@ -258,7 +293,7 @@ function generatedHTML() {
     `);
     })
 
-    return finalHTML.join("");
+    return finalHTMLArray.join("");
 }
 generatedHTML();
 
