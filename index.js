@@ -199,6 +199,7 @@ saveEmployee();
 //holds final HTML
 finalHTML = [];
 
+//generates HTML for each employee, joins employee data and pushes to finalHTML array  
 function generatedHTML() {
     
     managerArray.forEach(manager => { finalHTML.push(`
@@ -261,6 +262,8 @@ function generatedHTML() {
 }
 generatedHTML();
 
+
+//finalHTML takes the joined employee HTML for the finalHTML array and incorporates it into the HTML template 
 function finalHTML() {
     return `
     <!doctype html>
@@ -301,6 +304,7 @@ function finalHTML() {
 }
 
 
+//generates the fine to the dist folder with the final HTML that contains the employee data from the manager/engineer/intern Array 
 function generateFile() {
     fs.writeFile('./dist/index.html', finalHTML(), err =>{
         if(err){
