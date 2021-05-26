@@ -324,7 +324,7 @@ function finalHTML() {
                 </header>
             </div>
 
-            ${this.finalHTML}
+            ${this.finalHTMLArray}
         
               
         </section>
