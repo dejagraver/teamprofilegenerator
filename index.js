@@ -237,7 +237,7 @@ finalHTMLArray = [];
 //generates HTML for each employee, joins employee data and pushes to finalHTML array  
 function generatedHTML() {
     
-    managerArray.forEach(manager => { finalHTML.push(`
+    managerArray.forEach(manager => { finalHTMLArray.push(`
     <div class="columns p-2">
     <div class="column col-4 col-xs-12">
       <div class="card text-center">
@@ -255,7 +255,7 @@ function generatedHTML() {
     `);
     })
 
-    engineerArray.forEach(engineer => { finalHTML.push(`
+    engineerArray.forEach(engineer => { finalHTMLArray.push(`
     <div class="columns p-2">
     <div class="column col-4 col-xs-12">
         <div class="card text-center">
@@ -274,7 +274,7 @@ function generatedHTML() {
     `);
     })
 
-    internArray.forEach(intern => { finalHTML.push(`
+    internArray.forEach(intern => { finalHTMLArray.push(`
     <div class="columns p-2">
     <div class="column col-4 col-xs-12">
         <div class="card text-center">
