@@ -6,7 +6,6 @@ const inquirer = require('inquirer');
 const fs = require('fs');
 
 //employee arrays to store employee data
-
 managerArray = [];
 engineerArray = [];
 internArray = [];
@@ -21,7 +20,7 @@ const chooseEmployee = [
     {
         type: "list",
         name: "employeeObjects",
-        message: "Choose an employee memeber",
+        message: "Choose an employee member",
         choices: ["Manager", "Engineer", " Intern"]
     }
 ];
@@ -194,7 +193,9 @@ function saveEmployee() {
                         if (value.addEmployee === "yes"){
                             saveEmployee();
                         } else {
+                            engineerHTML();
                             generateFile();
+                           
                         };
                 });
         }
@@ -207,6 +208,7 @@ function saveEmployee() {
                if (value.addEmployee === "yes"){
                 saveEmployee();
             } else {
+                internHTML();
                 generateFile();
             };
             });
@@ -236,18 +238,18 @@ finalHTMLArray = [];
 
 //generates HTML for each employee, joins employee data and pushes to finalHTML array  
 function managerHTML() {
-    managerArray.forEach(Manager => { finalHTMLArray.push(`
+    managerArray.forEach(manager => { finalHTMLArray.push(`
     <div class="columns p-2">
     <div class="column col-4 col-xs-12">
       <div class="card text-center">
-        <h1>${Manager.name}</h1>
+        <h1>${manager.name}</h1>
         <h2>Manager</h2>
       </div>
       <div>
           <ul>
-              <li> Id: ${Manager.id}</li>
-              <li> Email: ${Manager.email}</li>
-              <li> Office Number: ${Manager.officeNumber}</li>
+              <li> Id: ${manager.id}</li>
+              <li> Email: ${manager.email}</li>
+              <li> Office Number: ${manager.officeNumber}</li>
           </ul>
       </div>
     </div>
@@ -257,18 +259,18 @@ function managerHTML() {
 managerHTML();
 
 function engineerHTML() {
-    engineerArray.forEach(Engineer => { finalHTMLArray.push(`
+    engineerArray.forEach(engineer => { finalHTMLArray.push(`
     <div class="columns p-2">
     <div class="column col-4 col-xs-12">
         <div class="card text-center">
-            <h1> ${Engineer.name}</h1>
+            <h1> ${engineer.name}</h1>
             <h2>Engineer</h2>
         </div>
         <div>
             <ul>
-                <li> Id: ${Engineer.id} </li>
-                <li> Email: ${Engineer.email} </li>
-                <li> Github: ${Engineer.github} </li>
+                <li> Id: ${engineer.id} </li>
+                <li> Email: ${engineer.email} </li>
+                <li> Github: ${engineer.github} </li>
             </ul>
         </div>
     </div>
@@ -276,22 +278,21 @@ function engineerHTML() {
     `);
     })
 }
-engineerHTML();
 
 function internHTML() {
-    internArray.forEach(Intern => { finalHTMLArray.push(
+    internArray.forEach(intern => { finalHTMLArray.push(
         `
     <div class="columns p-2">
     <div class="column col-4 col-xs-12">
         <div class="card text-center">
-            <h1> ${Intern.name} </h1>
+            <h1> ${intern.name} </h1>
             <h2>Intern </h2>
         </div>
         <div>
             <ul>
-                <li> Id: ${Intern.id} </li>
-                <li> Email: ${Intern.email} </li>
-                <li> School: ${Intern.school} </li>
+                <li> Id: ${intern.id} </li>
+                <li> Email: ${intern.email} </li>
+                <li> School: ${intern.school} </li>
             </ul>
         </div>
     </div> 
@@ -299,9 +300,8 @@ function internHTML() {
     `);
     })
 }
-internHTML();
 
-const employees = finalHTMLArray.join("")
+// const employees = finalHTMLArray.join("");
 
 //finalHTML takes the joined employee HTML for the finalHTML array and incorporates it into the HTML template 
 function finalHTML() {
@@ -329,9 +329,7 @@ function finalHTML() {
                 </header>
             </div>
 
-            <div>
-            ${employees}
-            </div>
+            ${this.finalHTMLArray}
               
         </section>
         <!-- Optional JavaScript -->
