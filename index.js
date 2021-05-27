@@ -193,7 +193,7 @@ function saveEmployee() {
                         if (value.addEmployee === "yes"){
                             saveEmployee();
                         } else {
-                            engineerHTML();
+                            managerHTML();
                             generateFile();
                            
                         };
@@ -208,7 +208,7 @@ function saveEmployee() {
                if (value.addEmployee === "yes"){
                 saveEmployee();
             } else {
-                internHTML();
+                engineerHTML();
                 generateFile();
             };
             });
@@ -221,6 +221,7 @@ function saveEmployee() {
                 if (value.addEmployee === "yes"){
                     saveEmployee();
                 } else {
+                    internHTML();
                     generateFile();
                 };
             });
@@ -256,7 +257,7 @@ function managerHTML() {
     `);
     })
 }
-managerHTML();
+
 
 function engineerHTML() {
     engineerArray.forEach(engineer => { finalHTMLArray.push(`
@@ -346,7 +347,7 @@ function finalHTML() {
 function generateFile() {
     fs.writeFile('./dist/index.html', finalHTML(), err =>{
         if(err){
-            return;
+            console.log(arr);
         }
         else{
             console.log("HTML is now generated");
