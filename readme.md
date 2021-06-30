@@ -31,7 +31,7 @@
     <br />
 
  <a name="Links">#Links</a>
- https://github.com/dejagraver/codingquiz
+https://dejagraver.github.io/teamprofilegenerator/
   <br />
 
 
