@@ -21,7 +21,7 @@ const chooseEmployee = [
         type: "list",
         name: "employeeObjects",
         message: "Choose an employee member",
-        choices: ["Manager", "Engineer", " Intern"]
+        choices: ["Manager", "Engineer", "Intern"]
     }
 ];
 
